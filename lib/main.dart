@@ -1,7 +1,3 @@
-// In-Class Activity #12 — Inventory Management App with Firestore
-// CSC 4360 — Mobile App Development — Spring 2026
-// Luci Liu
-
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'models/item.dart';
@@ -31,8 +27,6 @@ class InventoryApp extends StatelessWidget {
   }
 }
 
-// ── Categories ──────────────────────────────────────────────────────────────
-
 const List<String> kCategories = [
   'General',
   'Electronics',
@@ -41,8 +35,6 @@ const List<String> kCategories = [
   'Tools',
   'Other',
 ];
-
-// ── Main screen ─────────────────────────────────────────────────────────────
 
 class InventoryScreen extends StatefulWidget {
   const InventoryScreen({super.key});
@@ -54,11 +46,9 @@ class InventoryScreen extends StatefulWidget {
 class _InventoryScreenState extends State<InventoryScreen> {
   final InventoryService _service = InventoryService();
 
-  // Enhanced feature 1: search
   final TextEditingController _searchCtrl = TextEditingController();
   String _searchQuery = '';
 
-  // Enhanced feature 2: category filter
   String _selectedCategory = 'All';
 
   @override
@@ -111,7 +101,6 @@ class _InventoryScreenState extends State<InventoryScreen> {
                 ),
                 const SizedBox(height: 16),
 
-                // Name
                 TextFormField(
                   controller: nameCtrl,
                   decoration: const InputDecoration(
@@ -127,7 +116,6 @@ class _InventoryScreenState extends State<InventoryScreen> {
                 ),
                 const SizedBox(height: 12),
 
-                // Category dropdown
                 DropdownButtonFormField<String>(
                   value: category,
                   decoration: const InputDecoration(
@@ -142,7 +130,6 @@ class _InventoryScreenState extends State<InventoryScreen> {
                 ),
                 const SizedBox(height: 12),
 
-                // Quantity
                 TextFormField(
                   controller: qtyCtrl,
                   keyboardType: TextInputType.number,
@@ -161,7 +148,6 @@ class _InventoryScreenState extends State<InventoryScreen> {
                 ),
                 const SizedBox(height: 12),
 
-                // Price
                 TextFormField(
                   controller: priceCtrl,
                   keyboardType:
@@ -243,7 +229,6 @@ class _InventoryScreenState extends State<InventoryScreen> {
       ),
       body: Column(
         children: [
-          // Enhanced feature 1: search bar
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
             child: TextField(
@@ -269,7 +254,6 @@ class _InventoryScreenState extends State<InventoryScreen> {
             ),
           ),
 
-          // Enhanced feature 2: category filter chips
           SizedBox(
             height: 44,
             child: ListView(
